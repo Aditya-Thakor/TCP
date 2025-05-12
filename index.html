@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCP</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+   <!-- Navbar -->
+   <nav class="d-flex align-items-center justify-content-between">
+    <div class="logo">
+      <img src="/images/logo/tcp-color-logo-transparent.png" alt="" />
+    </div>
+    <div class="nav d-none d-md-block">
+      <ul class="d-flex list-unstyled gap-4 align-items-center m-0">
+        <li><a class="text-decoration-none" href="#">Home</a></li>
+        <li><a class="text-decoration-none" href="#">About</a></li>
+        <li><a class="text-decoration-none" href="#">Courses</a></li>
+        <li><a class="text-decoration-none" href="#">Services</a></li>
+        <li><a class="text-decoration-none" href="#">Blog</a></li>
+        <li><a class="text-decoration-none" href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div
+      class="btn d-none d-md-block rounded-5 text-white pe-3 ps-3 pt-2 pb-2 align-content-center"
+    >
+      <i class="fa-regular fa-user me-2"></i>Student LogIn
+    </div>
+
+    <!-- hamburger Menu -->
+    <div class="hamburger d-md-none position-relative">
+      <i class="fa-solid fa-bars"></i>
+      <div class="menu position-absolute ">
+        <ul class="list-unstyled">
+          <li><a class="text-decoration-none txt-color" href="#">Home</a></li>
+          <li>
+            <a class="text-decoration-none txt-color" href="#">About</a>
+          </li>
+          <li>
+            <a class="text-decoration-none txt-color" href="#">Courses</a>
+          </li>
+          <li>
+            <a class="text-decoration-none txt-color" href="#">Services</a>
+          </li>
+          <li><a class="text-decoration-none txt-color" href="#">Blog</a></li>
+          <li>
+            <a class="text-decoration-none txt-color" href="#">Contact</a>
+          </li>
+        </ul>
+        <div class="btn rounded-5 text-white align-content-center me-0 mb-3">
+          <i class="fa-regular fa-user me-2"></i>Student LogIn
+        </div>
+      </div>
+    </div>
+  </nav>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            $(".hamburger").click(function(){
+               $(".menu").toggleClass('menuslide')
+            });
+        });
+    </script>
+</body>
+</html>
