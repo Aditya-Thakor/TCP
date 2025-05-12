@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>navbar</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/all.css" />
+  </head>
+  <style>
+    @font-face {
+      font-family: inter;
+      src: url("/font/InterTight-Regular.ttf");
+    }
+    html,
+    body {
+      font-family: "inter";
+    }
+    nav {
+      height: 80px;
+      background: #fafafa;
+    }
+    .logo {
+      width: 100px;
+      height: 100px;
+      /* background-image: url("/images/logo/tcp-transparent.png"); */
+      -border: 2px solid red;
+      margin-left: 5%;
+      align-content: center;
+    }
+    .logo img {
+      height: 60px;
+      width: auto;
+    }
+
+    .nav ul li a {
+      font-size: 18px;
+      color: #1d4563;
+
+      &:hover{
+        color: #0e87b3;
+        text-shadow: 0 3px 2px #c1c1c1;
+      }
+    }
+    .btn {
+      margin-right: 5%;
+      /* border: 2px solid #357395; */
+      background: #004367;
+      box-shadow: 0 3px 4px #818181;
+
+      &:hover {
+        background: #275b77; /*275b77 357395*/
+        color: white;
+      }
+    }
+    .hamburger > i {
+      color: #275b77;
+      font-size: 35px;
+      margin-right: 20px;
+    }
+    .menu {
+      width: 233px;
+      text-align: center;
+      line-height: 2.5rem;
+      right: 0%;
+      top: 166%;
+      background-color: #fafafa;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      flex-wrap: wrap;
+      right: -600%;
+      transition: 0.5s;
+    }
+    .menuslide{
+        right: 0;
+        display: flex;
+        transition: 0.5s;
+    }
+    .txt-color {
+      color: #1d4563;
+    }
+  </style>
+  <body>
+    <nav class="d-flex align-items-center justify-content-between">
+      <div class="logo">
+        <img src="/images/logo/tcp-color-logo-transparent.png" alt="" />
+      </div>
+      <div class="nav d-none d-md-block">
+        <ul class="d-flex list-unstyled gap-4 align-items-center m-0">
+          <li><a class="text-decoration-none" href="#">Home</a></li>
+          <li><a class="text-decoration-none" href="#">About</a></li>
+          <li><a class="text-decoration-none" href="#">Courses</a></li>
+          <li><a class="text-decoration-none" href="#">Services</a></li>
+          <li><a class="text-decoration-none" href="#">Blog</a></li>
+          <li><a class="text-decoration-none" href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div
+        class="btn d-none d-md-block rounded-5 text-white pe-3 ps-3 pt-2 pb-2 align-content-center"
+      >
+        <i class="fa-regular fa-user me-2"></i>Student LogIn
+      </div>
+
+      <!-- hamburger Menu -->
+      <div class="hamburger d-md-none position-relative">
+        <i class="fa-solid fa-bars"></i>
+        <div class="menu position-absolute ">
+          <ul class="list-unstyled">
+            <li><a class="text-decoration-none txt-color" href="#">Home</a></li>
+            <li>
+              <a class="text-decoration-none txt-color" href="#">About</a>
+            </li>
+            <li>
+              <a class="text-decoration-none txt-color" href="#">Courses</a>
+            </li>
+            <li>
+              <a class="text-decoration-none txt-color" href="#">Services</a>
+            </li>
+            <li><a class="text-decoration-none txt-color" href="#">Blog</a></li>
+            <li>
+              <a class="text-decoration-none txt-color" href="#">Contact</a>
+            </li>
+          </ul>
+          <div class="btn rounded-5 text-white align-content-center me-0 mb-3">
+            <i class="fa-regular fa-user me-2"></i>Student LogIn
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            $(".hamburger").click(function(){
+               $(".menu").toggleClass('menuslide')
+            });
+        });
+    </script>
+  </body>
+</html>
