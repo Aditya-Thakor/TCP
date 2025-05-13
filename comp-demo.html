@@ -18,7 +18,18 @@
         width: 100%;
       }
       .card_Container {
-        height: 100vh;
+        -height: 100vh;
+      }
+      .card-section {
+        margin-top: 1%;
+        margin-bottom: 5%;
+      }
+      .card-section h1 {
+        color: #0c4ba9;
+        font-size: 3rem;
+        font-family: sans-serif;
+        font-weight: 600;
+        letter-spacing: 1.5px;
       }
       .card i {
         font-size: 24px;
@@ -27,37 +38,85 @@
         top: -3px;
         rotate: 45deg;
         color: #fff;
-        background: orange;
+        background: #58aaff;
         padding: 12px;
         border-radius: 50%;
         padding-left: 15px;
         padding-right: 16px;
+
+        &:hover {
+          transform: translate3d(0px, -5px, 0px);
+        }
+      }
+      .card-img {
+        transition: 0.5s ease-in-out;
+      }
+      .card-img:hover {
+        /* content: url('/images/cards/training.svg') ; */
+        /* &:hover{
+          box-shadow:  0 0 10px #696969;
+        } */
+        transition: 0.5s;
+      }
+      .card1 {
+        &:hover {
+          content: url("/images/cards/training.svg");
+          transition: 3s;
+        }
+      }
+      .card2 {
+        &:hover {
+          content: url("/images/cards/it\ innovation&development.svg");
+        }
+      }
+      .card3 {
+        &:hover {
+          content: url("/images/cards/degree.svg");
+        }
+      }
+      .card4 {
+        &:hover {
+          content: url("/images/cards/immigration.svg");
+        }
       }
     </style>
   </head>
   <body>
+    <div class="card-section">
+      <h1 class="text-center">Our Services</h1>
+    </div>
     <div
       class="card_Container d-flex gap-4 justify-content-center align-items-center"
     >
       <div class="card border-0">
         <i class="fa-solid fa-arrow-up"></i>
-        <img src="/images/cards/training.svg" alt="" />
+        <img class="card-img card1" src="/images/cards/trining1.svg" alt="" />
       </div>
       <div class="card border-0">
         <i class="fa-solid fa-arrow-up"></i>
-        <img src="/images/cards/it innovation&development.svg" alt="" />
+        <img class="card-img card2" src="/images/cards/it.svg" alt="" />
       </div>
       <div class="card border-0">
         <i class="fa-solid fa-arrow-up"></i>
-        <img src="/images/cards/degree.svg" alt="" />
+        <img class="card-img card3" src="/images/cards/degree1.svg" alt="" />
       </div>
       <div class="card border-0">
         <i class="fa-solid fa-arrow-up"></i>
-        <img src="/images/cards/immigration.svg" alt="" />
+        <img class="card-img card4" src="/images/cards/immi.svg" alt="" />
       </div>
     </div>
 
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/jquery-3.7.1.min.js"></script>
+
+    <script>
+      $(function () {
+        $(".card")
+          .find("i")
+          .click(function () {
+            alert("okkk");
+          });
+      });
+    </script>
   </body>
 </html>
