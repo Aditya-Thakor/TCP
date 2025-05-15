@@ -1,11 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>card</title>
+    <link rel="stylesheet" href="/css/all.css">
+    <style>
+      .card_container {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .card {
+        height: 270px;
+        width: 250px;
+        background: #b163be;
+        position: relative;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .circle {
+        height: 70px;
+        width: 70px;
+        background: #ffffff;
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-radius: 0 0 0 60%;
+      }
+
+      .circle::before {
+        content: "";
+        height: 14px;
+        width: 24px;
+        /* background: red; */
+        display: flex;
+        border-radius: 0 13px 0 0;
+        position: absolute;
+        left: -24px;
+        top: -1px;
+        box-shadow: 10px 0 #ffffff;
+      }
+
+      .circle::after {
+        content: "";
+        height: 17px;
+        width: 19px;
+        /* background: red; */
+        position: absolute;
+        right: 0px;
+        top: 68px;
+        border-radius: 0 14px 0 0;
+        box-shadow: 12px 0 #ffffff;
+      }
+      .circle i{
+        position: absolute;
+        right: 0;
+        font-size: 30px;
+        rotate: 45deg;
+        background: #703e78;
+        padding: 15px 18px;
+        border-radius: 50% ;
+        
+      }
+
+      .img_container{
+        height: 170px;width: 150px;
+        background: #703e78;
+        margin-top: 50px;
+        border-radius: 3% 40%;
+        object-fit: cover;
+        -overflow: hidden;
+      }
+
+      .img_container::before{
+        content: 'Training';
+        position: absolute;
+        top: 20px;
+        left: 40px;
+        font-size: 24px;
+        font-family: sans-serif;
+        font-weight: 600;
+        color: white;
+        letter-spacing: 1.5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card_container">
+      <div class="card">
+        <div class="circle">
+          <i class="fa-solid fa-arrow-up"></i>
+        </div>   
+   
+        <div class="img_container">          
+          <img src="/images/utilities/svg/Pair programming-amico.svg" alt="">
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
