@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/all.css" />
+    <title>hero-sec-demo</title>
+    <style>
+      :root {
+        --bg-primary: #f5fbff;
+        --text-primary: #1c4981;
+        --btn-primary: linear-gradient(135deg, #59b4ff, #1f5394);
+        --btn-hover: linear-gradient(135deg, #1f5394, #59b4ff);
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+      }
+      main {
+        height: 100vh;
+        background: var(--bg-primary);
+      }
+      .hero {
+        height: 100%;
+        width: 100%;
+      }
+
+      .hero_txt {
+        top: 20%;
+        padding-right: 10px;
+        color: var(--text-primary);
+      }
+      .h_icon {
+        height: 140px;
+        width: 140px;
+        /* background: url(/images/GIFs/KDAyU1txYm.gif) center; */
+        background-size: cover;
+        position: absolute;
+        top: 50%;
+        left: 11%;
+      }
+
+      .hero_btn {
+        top: 75%;
+      }
+
+      .btn {
+        background: var(--btn-primary);
+        border: none;
+        box-shadow: 0px 0px 5px #7d7d7d;
+        transition: 0.3s;
+
+        &:hover {
+          background: var(--btn-hover);
+          font-weight: 600;
+          box-shadow: 0px 2px 5px #494949;
+        }
+      }
+
+      .message {
+        height: 50px;
+        margin-top: 33px;
+      }
+
+      .bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: linear-gradient(45deg, #a8d8ea, #8ab4ff);
+        z-index: 1;
+        height: 100%;
+        animation: bg-slide 6s infinite;
+        border-radius: 2px;
+      }
+      .word {
+        position: absolute;
+        left: 1rem;
+        color: var(--text-primary) /*#fff*/;
+        font-weight: 700;
+        font-family: Tahoma;
+        opacity: 0;
+        z-index: 2;
+        animation: word-cycle 6s infinite;
+      }
+      .word:nth-child(2) {
+        animation-delay: 0s;
+      }
+      .word:nth-child(3) {
+        animation-delay: 2s;
+      }
+      .word:nth-child(4) {
+        animation-delay: 4.15s;
+      }
+
+      .img_container {
+        height: 408px;
+        width: 449px;
+        background: url(/images/hero/hero_prototype_1.webp) center;
+        background-size: cover;
+        border-radius: 50px 50px 92px 283px;
+        right: 0;
+      }
+
+      @keyframes bg-slide {
+        0%,
+        10% {
+          width: 0;
+        }
+        15%,
+        30% {
+          /* width: 285px; */
+          width: 250px;
+        }
+        35%,
+        45% {
+          width: 0;
+        }
+        50%,
+        65% {
+          width: 250px;
+          /* width: 285px; */
+        }
+        70%,
+        80% {
+          width: 0;
+        }
+        85%,
+        100% {
+          width: 250px;
+          /* width: 285px; */
+        }
+      }
+
+      @keyframes word-cycle {
+        0%,
+        9% {
+          opacity: 0;
+        }
+        10%,
+        29% {
+          opacity: 1;
+        }
+        30%,
+        100% {
+          opacity: 0;
+        }
+      }
+    </style>
+    <!-- <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script><dotlottie-player src="https://lottie.host/272b60dd-462d-42a3-8ed6-fec4143633d6/X4FxBascRI.json" background="transparent" speed="1" style="width: 300px; height: 300px" direction="1" playMode="normal" loop  autoplay></dotlottie-player> -->
+  </head>
+  <body>
+    <main class=" ">
+      <div class="hero d-flex container">
+        <div
+          class="text_area d-flex justify-content-center flex-column h-100 w-50 position-relative"
+        >
+          <div class="hero_txt position-absolute">
+            <h1>Empowering Futures with Job-Ready IT Skills</h1>
+
+            <h1 class="d-flex align-items-center text-uppercase">
+              <div class="message position-relative">
+                <div class="bg"></div>
+                <div class="word">Learn</div>
+                <div class="word">Build</div>
+                <div class="word">Succeed!</div>
+              </div>
+            </h1>
+          </div>
+          <div class="h_icon">
+            <img src="/images/GIFs/KDAyU1txYm.gif" alt="">
+          </div>
+          <div class="hero_btn position-absolute">
+            <button class="btn btn-success me-3">View Courses</button>
+            <button class="btn btn-success">Enroll Now!</button>
+          </div>
+        </div>
+        <div
+          class="img_area d-flex align-items-center position-relative h-100 w-50"
+        >
+          <div class="img_container position-absolute"></div>
+        </div>
+      </div>
+    </main>
+    
+    <script src="/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
