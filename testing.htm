@@ -3,103 +3,683 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>card</title>
-    <link rel="stylesheet" href="/css/all.css">
+    <title>tcp-india</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/all.css" />
     <style>
-      .card_container {
-        height: 100vh;
+      :root {
+        --bg-primary: #f5fbff;
+        --text-primary: #1c4981;
+        --btn-primary: linear-gradient(135deg, #59b4ff, #1f5394);
+        --btn-hover: linear-gradient(135deg, #1f5394, #59b4ff);
+
+        /* Cards */
+        --card-primary: #e4eeff;
+        --card-secondary: #ffffff;
+        --card-i-primary: #5782af;
+        --card-border: #0c4ba9;
+        --card-text-primary: #0c4ba9;
+        --card-hover-txt: #ffffff;
+
+        /* Training Card */
+        --training-card-hover-bgmain: #8ebbff;
+        --training-card-hover-bgsec: #0c4ba9;
+        --taining-i-hover: #58aaff;
+
+        /* IT Card */
+        --it-card-hover-bgmain: #ba68c8;
+        --it-card-hover-bgsec: #703e78;
+        --it-i-hover: #703e78;
+
+        /* Degree Card */
+        --degree-card-hover-bgmain: #ff725e;
+        --degree-card-hover-bgsec: #9f493d;
+        --degree-i-hover: #9f493d;
+
+        /* Immigration Card */
+        --immi-hover-bgmain: #92e3a9;
+        --immi-hover-bgsec: #629578;
+        --immi-i-hover: #629578;
+      }
+      @font-face {
+        font-family: inter;
+        src: url("/font/InterTight-Regular.ttf");
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+        font-family: "inter";
+        background-color: #f5fbff;
+      }
+      nav {
+        margin: auto;
+        height: 80px;
+        width: 90%;
+        background: #ffffff;
+        border-radius: 30px;
+        box-shadow: 0px 2px 5px #c9c9c9;
+      }
+      .logo {
+        width: 100px;
+        height: 100px;
+        margin-left: 5%;
+        align-content: center;
+      }
+      .logo img {
+        height: 60px;
+        width: auto;
+      }
+
+      .nav ul li a {
+        font-size: 18px;
+        color: #1d4563;
+
+        &:hover {
+          color: #0e87b3;
+          text-shadow: 0 3px 2px #c1c1c1;
+          font-weight: 600;
+        }
+      }
+      .btn {
+        margin-right: 5%;
+        /* background: #004367; */
+        background: var(--btn-primary);
+        box-shadow: 0 3px 4px #818181;
+        border: none;
+        transition: 0.3s;
+
+        &:hover {
+          background: var(--btn-hover);
+          /* background: #275b77;  */
+          /*275b77 357395*/
+          color: white;
+        }
+      }
+      .hamburger > i {
+        color: #275b77;
+        font-size: 35px;
+        margin-right: 20px;
+      }
+      .menu {
+        width: 233px;
+        text-align: center;
+        line-height: 2.5rem;
+        right: 0%;
+        top: 166%;
+        background-color: #fafafa;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+        right: -600%;
+        transition: 0.5s;
+      }
+      .menuslide {
+        right: 0;
         display: flex;
+        transition: 0.5s;
+      }
+      .txt-color {
+        color: #1d4563;
+      }
+
+      main {
+        height: 90vh;
+        -background: var(--bg-primary);
+      }
+      .hero {
+        height: 100%;
+        width: 100%;
+      }
+
+      .hero_txt {
+        top: 13%;
+        padding-right: 10px;
+        color: var(--text-primary);
+      }
+
+      .hero_txt :nth-child(1) {
+        font-weight: 600;
+      }
+      .h_para {
+        height: 72px;
+        width: 375px;
+        background-size: cover;
+        position: absolute;
+        top: 50%;
+        left: 0%;
+        font-weight: lighter;
+        font-style: italic;
+        font-size: 14px;
+        color: #165463;
+        font-family: "inter";
+      }
+
+      .h_para::after {
+        content: "-Aditya";
+        position: absolute;
+        bottom: -20px;
+        right: 80px;
+        font-weight: 600;
+      }
+
+      .hero_btn {
+        top: 75%;
+      }
+
+      .hbtn {
+        background: var(--btn-primary);
+        border: none;
+        box-shadow: 0px 0px 5px #7d7d7d;
+        transition: 0.3s;
+        margin: 0;
+
+        &:hover {
+          background: var(--btn-hover);
+          font-weight: 600;
+          box-shadow: 0px 2px 5px #494949;
+        }
+      }
+
+      .message {
+        height: 50px;
+        margin-top: 33px;
+      }
+
+      .bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: linear-gradient(45deg, #a8d8ea, #8ab4ff);
+        z-index: 1;
+        height: 100%;
+        animation: bg-slide 6s infinite;
+        border-radius: 2px;
+      }
+      .word {
+        position: absolute;
+        left: 1rem;
+        color: var(--text-primary) /*#fff*/;
+        font-weight: 700;
+        font-family: Tahoma;
+        opacity: 0;
+        z-index: 2;
+        animation: word-cycle 6s infinite;
+      }
+      .word:nth-child(2) {
+        animation-delay: 0s;
+      }
+      .word:nth-child(3) {
+        animation-delay: 2s;
+      }
+      .word:nth-child(4) {
+        animation-delay: 4.15s;
+      }
+
+      .himg_container {
+        height: 408px;
+        width: 449px;
+        background: url(/images/hero/hero_prototype_1.webp) center;
+        background-size: cover;
+        border-radius: 50px 50px 92px 283px;
+        right: 0;
+      }
+
+      @keyframes bg-slide {
+        0%,
+        10% {
+          width: 0;
+        }
+        15%,
+        30% {
+          /* width: 285px; */
+          width: 250px;
+        }
+        35%,
+        45% {
+          width: 0;
+        }
+        50%,
+        65% {
+          width: 250px;
+          /* width: 285px; */
+        }
+        70%,
+        80% {
+          width: 0;
+        }
+        85%,
+        100% {
+          width: 250px;
+          /* width: 285px; */
+        }
+      }
+
+      @keyframes word-cycle {
+        0%,
+        9% {
+          opacity: 0;
+        }
+        10%,
+        29% {
+          opacity: 1;
+        }
+        30%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      .card_container {
+        height: 70vh;
+        display: flex;
+        flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+        gap: 40px;
       }
+      .heading {
+        font-family: inter;
+        font-size: 2.5rem;
+        margin: 30px 0;
+        text-align: center;
+        font-weight: 600;
+        /* text-shadow: 2px 4px 3px #c5c5c5; */
+      }
+      .heading::after {
+        content: url(/images/elements/Line-8.svg);
+        position: absolute;
+        top: 24px;
+        right: 40%;
+        z-index: -1;
+      }
+      .heading span {
+        color: var(--card-border);
+      }
+
       .card {
         height: 270px;
         width: 250px;
-        background: #b163be;
+
+        background: var(--card-primary) /*#b163be*/; 
         position: relative;
         border-radius: 15px;
+        border-top-right-radius: 30%;
         display: flex;
         justify-content: center;
         align-items: center;
+        border: none;
+
+         
       }
+
+      /* Card-2 hover */
+      .card-2 {
+        background: var(--it-card-hover-bgmain) !important;
+      }
+      .c_2_i {
+        background: var(--it-i-hover) !important;
+      }
+      .c_2_imgC {
+        background: var(--it-card-hover-bgsec) !important;
+      }
+
+      /* Card -3 hover */
+      .c_3 {
+        background: var(--degree-card-hover-bgmain) !important;
+      }
+      .c_3_imgC {
+        background: var(--degree-card-hover-bgsec) !important;
+      }
+      .c_3_i {
+        background: var(--degree-i-hover) !important;
+      }
+
+      /* Card-4 hover */
+      .c_4 {
+        background: var(--immi-hover-bgmain) !important;
+      }
+      .c_4_imgC {
+        background: var(--immi-hover-bgsec) !important;
+      }
+      .c_4_i {
+        background: var(--immi-i-hover) !important;
+      }
+
+      /*----------------------- HOVER EFFECTS --------------------------------------------------------------------- */
+      .card:hover {
+        box-shadow: -7px 11px 11px #999999;
+        transition: 0.3s ease-in-out;
+        background: var(--training-card-hover-bgmain);
+      }
+      .card:hover .img_container {
+        background: var(--training-card-hover-bgsec);
+        transition: 0.3s ease-in-out;
+      }
+      .card:hover .img_container > img {
+        scale: 1.07;
+        transition: 0.3s;
+      }
+      .card:hover .circle > .icon {
+        background: var(--taining-i-hover);
+        box-shadow: -2px 1px 7px #999999;
+        transition: 0.3s;
+      }
+      .card:hover .card_title {
+        color: var(--card-hover-txt);
+        transition: 0.3s;
+        scale: 1.2;
+      }
+
+      /* -------------------------------------------------------------------------------------------------------------- */
+
       .circle {
         height: 70px;
         width: 70px;
-        background: #ffffff;
+        /* background: #ffffff; */
+        background: var(--bg-primary); 
         position: absolute;
         top: 0;
         right: 0;
-        border-radius: 0 0 0 60%;
+        border-radius: 0 50% 50% 60%;
       }
 
       .circle::before {
         content: "";
         height: 14px;
-        width: 24px;
-        /* background: red; */
+        width: 24px; 
         display: flex;
         border-radius: 0 13px 0 0;
         position: absolute;
         left: -24px;
         top: -1px;
-        box-shadow: 10px 0 #ffffff;
+        box-shadow: 10px 0 var(--bg-primary) /*#ffffff*/;
       }
 
       .circle::after {
         content: "";
         height: 17px;
         width: 19px;
-        /* background: red; */
         position: absolute;
         right: 0px;
-        top: 68px;
+        top: 54px;
         border-radius: 0 14px 0 0;
-        box-shadow: 12px 0 #ffffff;
+        box-shadow: 12px 0 var(--bg-primary) /*#ffffff*/;
       }
-      .circle i{
+      .circle i {
         position: absolute;
-        right: 0;
+        right: 30%;
+        top: 21%;
         font-size: 30px;
         rotate: 45deg;
-        background: #703e78;
-        padding: 15px 18px;
-        border-radius: 50% ;
-        
+        /* background: var(--card-i-primary); */
+        color: #ffffff;
+        /* color: var(--bg-primary); */
+        /* padding: 8px 18px; */
+        border-radius: 50%;
+        z-index: 1;
+
       }
 
-      .img_container{
-        height: 170px;width: 150px;
-        background: #703e78;
+      .img_container {
+        height: 170px;
+        width: 150px;
+        background: var(--card-secondary) /*#703e78*/;
         margin-top: 50px;
         border-radius: 3% 40%;
         object-fit: cover;
         -overflow: hidden;
+
       }
 
-      .img_container::before{
-        content: 'Training';
+      .card_title {
         position: absolute;
-        top: 20px;
-        left: 40px;
-        font-size: 24px;
+        top: 0px;
+        left: 0px;
+        margin-top: 2%;
+        margin-left: 6%;
+        padding: 4%;
+        /* text-align: center; */
+        font-size: 18px;
         font-family: sans-serif;
         font-weight: 600;
-        color: white;
-        letter-spacing: 1.5px;
+        color: var(--card-text-primary);
+        /* letter-spacing: 0.5px; */
+        word-wrap: break-word;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        line-height: 18px;
+      }
+      .icon {
+        height: 60px;
+        width: 60px;
+        background: var(--card-i-primary);
+        border-radius: 50%;
+        position: absolute;
+        top: 3%;
+        left: 10%;
+
+        /* &:hover{
+          animation:  tipUp 1s cubic-bezier(0.0, 0.6, 1.0, 0.4) infinite .5s;
+        } */
+      }
+
+      .icon:hover i {
+        animation: tipUp 0.5s cubic-bezier(0, 0.6, 1, 0.4) 0.01s;
+      }
+
+      @keyframes tipUp {
+        0% {
+          transform: /*translateY(50px)*/ translateY(20px) rotateZ(0deg);
+        }
+        100% {
+          transform: /*translateY(-70px)*/ translateY(-70px) rotateZ(0deg);
+        }
       }
     </style>
   </head>
-  <body>
-    <div class="card_container">
-      <div class="card">
-        <div class="circle">
-          <i class="fa-solid fa-arrow-up"></i>
-        </div>   
-   
-        <div class="img_container">          
-          <img src="/images/utilities/svg/Pair programming-amico.svg" alt="">
+  <body class="">
+    <header>
+      <nav class="d-flex align-items-center justify-content-between container">
+        <div class="logo">
+          <img src="/images/logo/tcp-color-logo-transparent.png" alt="" />
+        </div>
+        <div class="nav d-none d-md-block">
+          <ul class="d-flex list-unstyled gap-4 align-items-center m-0">
+            <li><a class="text-decoration-none" href="#">Home</a></li>
+            <li><a class="text-decoration-none" href="#">About</a></li>
+            <li><a class="text-decoration-none" href="#">Courses</a></li>
+            <li><a class="text-decoration-none" href="#">Services</a></li>
+            <li><a class="text-decoration-none" href="#">Blog</a></li>
+            <li><a class="text-decoration-none" href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div
+          class="btn d-none d-md-block rounded-5 text-white pe-3 ps-3 pt-2 pb-2 align-content-center"
+        >
+          <i class="fa-regular fa-user me-2"></i>Student LogIn
+        </div>
+
+        <!-- hamburger Menu -->
+        <div class="hamburger d-md-none position-relative">
+          <i class="fa-solid fa-bars"></i>
+          <div class="menu position-absolute">
+            <ul class="list-unstyled">
+              <li>
+                <a class="text-decoration-none txt-color" href="#">Home</a>
+              </li>
+              <li>
+                <a class="text-decoration-none txt-color" href="#">About</a>
+              </li>
+              <li>
+                <a class="text-decoration-none txt-color" href="#">Courses</a>
+              </li>
+              <li>
+                <a class="text-decoration-none txt-color" href="#">Services</a>
+              </li>
+              <li>
+                <a class="text-decoration-none txt-color" href="#">Blog</a>
+              </li>
+              <li>
+                <a class="text-decoration-none txt-color" href="#">Contact</a>
+              </li>
+            </ul>
+            <div
+              class="btn rounded-5 text-white align-content-center me-0 mb-3"
+            >
+              <i class="fa-regular fa-user me-2"></i>Student LogIn
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="hero d-flex container">
+        <div
+          class="text_area d-flex justify-content-center flex-column h-100 w-50 position-relative"
+        >
+          <div class="hero_txt position-absolute">
+            <h1>Empowering Futures with Job-Ready IT Skills</h1>
+
+            <h1 class="d-flex align-items-center text-uppercase">
+              <div class="message position-relative">
+                <div class="bg"></div>
+                <div class="word">Learn</div>
+                <div class="word">Build</div>
+                <div class="word">Succeed!</div>
+              </div>
+            </h1>
+          </div>
+          <div class="h_para">
+            <span
+              >" Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Impedit, possimus? Nihil repellendus in temporibus consectetur
+              iste delectus quaerat harum tempora "</span
+            >
+          </div>
+          <div class="hero_btn position-absolute">
+            <button class="btn hbtn btn-success me-3">View Courses</button>
+            <button class="btn hbtn btn-success">Enroll Now!</button>
+          </div>
+        </div>
+        <div
+          class="img_area d-flex align-items-center position-relative h-100 w-50"
+        >
+          <div class="himg_container position-absolute"></div>
         </div>
       </div>
-    </div>
+      <section class="services position-relative">
+        <h2 class="heading"><span>Our</span> Services</h2>
+
+        <div class="card_container">
+          <div class="card">
+            <div class="circle">
+              <div class="icon">
+                <i class="fa-solid fa-arrow-up"></i>
+              </div>
+            </div>
+            <span class="card_title">Training</span>
+            <div class="img_container">
+              <img
+                src="/images/utilities/svg/Coding workshop-rafiki.svg"
+                alt=""
+              />
+            </div>
+          </div>
+          <div id="c2" class="card">
+            <div class="circle">
+              <div class="icon">
+                <i class="fa-solid fa-arrow-up"></i>
+              </div>
+            </div>
+            <span class="card_title"
+              >IT Innovation <span> &</span> Development</span
+            >
+            <div class="img_container">
+              <img
+                src="/images/utilities/svg/Pair programming-amico.svg"
+                alt=""
+              />
+            </div>
+          </div>
+          <div id="c3" class="card">
+            <div class="circle">
+              <div class="icon">
+                <i class="fa-solid fa-arrow-up"></i>
+              </div>
+            </div>
+            <span class="card_title"
+              >Degree
+              <span style="margin-top: 6px; margin-left: 18%"
+                >Program</span
+              ></span
+            >
+            <div class="img_container">
+              <img
+                src="/images/utilities/svg/boy on graduation-pana.svg"
+                alt=""
+              />
+            </div>
+          </div>
+          <div id="c4" class="card">
+            <div class="circle">
+              <div class="icon">
+                <i class="fa-solid fa-arrow-up"></i>
+              </div>
+            </div>
+            <span class="card_title">Immigration</span>
+            <div class="img_container">
+              <img src="/images/utilities/svg/Study abroad-bro.svg" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/jquery-3.7.1.min.js"></script>
+    <script>
+      $(function () {
+        // for hamburger
+        $(".hamburger").click(function () {
+          $(".menu").toggleClass("menuslide");
+        });
+
+        // for Services Section
+
+        $("#c2").hover(function () {
+          $("#c2").toggleClass("card-2");
+          $("#c2").find(".img_container").toggleClass("c_2_imgC");
+          $("#c2").find(".icon").toggleClass("c_2_i");
+        });
+
+        $("#c3").hover(function () {
+          $("#c3").toggleClass("c_3");
+          $("#c3").find(".img_container").toggleClass("c_3_imgC");
+          $("#c3").find(".icon").toggleClass("c_3_i");
+        });
+
+        $("#c4").hover(function () {
+          $("#c4").toggleClass("c_4");
+          $("#c4").find(".img_container").toggleClass("c_4_imgC");
+          $("#c4").find(".icon").toggleClass("c_4_i");
+          // $("#c4").find(".img_container").html('<img src="/images/GIFs/KDAyU1txYm.gif" alt="">');
+        });
+
+        $(".icon").click(function () {
+          alert("okk");
+        });
+      });
+    </script>
   </body>
 </html>
