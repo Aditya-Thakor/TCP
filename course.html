@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Courses</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/all.css" />
+  </head>
+  <style>
+    @font-face {
+        font-family: inter;
+        src: url(/font/InterTight-Regular.ttf);
+    }
+    .container {
+      height: 600px;
+      width: 100%;
+      font-family: inter;
+    }
+    .course-card {
+      height: 350px;
+      width: 300px;
+      border-radius: 20px;
+    }
+    .bg-primary {
+      background-color: #cae7ff !important ;
+    }
+    .img_cont {
+      height: 170px;
+      width: 180px;
+      -background: #000;
+      margin: auto;
+      margin-top: 40px;
+    }
+    .img_cont img {
+      height: 100%;
+      width: 100%;
+    }
+    .crs_det h3 {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .crs_det h5{
+        font-size: 16px;
+        font-weight: 300;
+        
+    }
+    .btn{
+        background: #fff;
+        border: 2px solid;
+        border-image: linear-gradient(to right, #00AAFF, #6E37DD) 1;
+        font-weight: 400;
+        
+        
+        &:hover{
+            background: linear-gradient(to right, #00AAFF, #6E37DD);
+            color: #fff;
+            -scale: 1.03;
+            border-image: none;
+            border: none;
+            /* border-radius: 5px !important; */
+            border-radius: 0px !important; 
+            transition: ease-in-out;
+           
+        }
+    }
+  </style>
+  <body>
+    <div class="container d-flex justify-content-center align-items-center">
+      <div class="course-card d-block bg-primary">
+        <div class="img_cont">
+          <img src="/images/courses/java.png" alt="" />
+        </div>
+        <div class="crs_det p-3  position-relative">
+          <h3>Java Fullstack Development</h3>
+          <h5>Duration : <i class="fa-regular fa-calendar-check"></i> 15 Months </h5>
+          <button class="btn">View Course</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/jquery-3.7.1.min.js"></script>
+    <script>
+      $(function () {});
+    </script>
+  </body>
+</html>
